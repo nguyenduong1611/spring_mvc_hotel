@@ -22,33 +22,6 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
-    <script>
-        const t = new Date();
-        const date = ('0' + t.getDate()).slice(-2);
-        const month = ('0' + (t.getMonth() + 1)).slice(-2);
-        const year = t.getFullYear();
-
-
-        const time = `${date}/${month}/${year}`;
-        $(document).ready(function () {
-
-            $('.table .eBtn').on('click', function (event) {
-                event.preventDefault();
-                var href = $(this).attr('href');
-                $.get(href, function (lstUser, status) {
-                    $('.myModal #id1').val(lstUser.id);
-                    $('.myModal #email1').val(lstUser.email);
-                    $('.myModal #password1').val(lstUser.password);
-                    $('.myModal #create_at1').val(lstUser.createAt);
-                    $('.myModal #update_at1').val(time);
-                })
-                $('.myModal #exampleModal').modal();
-            });
-        });
-    </script>
-
-
 </head>
 
 <body id="page-top">
@@ -361,9 +334,11 @@
                                     <td th:text="${colunmmanager.createAt}"/>
                                     <td th:text="${colunmmanager.updateAt}"/>
                                     <td>
-                                        <a th:href="@{'/systemmanager/edit/' + ${colunmmanager.id}}" class="btn btn-sm eBtn"
+                                        <a th:href="@{'/systemmanager/edit/' + ${colunmmanager.id}}"
+                                           class="btn btn-sm eBtn"
                                            data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Edit</a>
-                                        <a th:href="@{'/systemmanager/delete/' + ${colunmmanager.id}}" class="btn btn-sm">Delete</a>
+                                        <a th:href="@{'/systemmanager/delete/' + ${colunmmanager.id}}"
+                                           class="btn btn-sm">Delete</a>
                                     </td>
                                 </tr>
 
@@ -372,7 +347,7 @@
                         </div>
                     </div>
                 </div>
-<!--                saveuser modal-->
+                <!--                saveuser modal-->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
@@ -412,20 +387,14 @@
                                         >
                                             Create
                                         </button>
-                                        <button
-                                                type="submit"
-                                                class="btn btn-warning"
-                                        >
-                                            Update
-                                        </button>
                                     </div>
-                            </div>
-                        </form>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-<!--                end save user modal-->
-<!--                edit user modal-->
+                <!--                end save user modal-->
+                <!--                edit user modal-->
                 <div class="myModal">
                     <form action="/updateuser" method="post">
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -448,7 +417,8 @@
                                                     name="id"
                                                     id="id1"
                                             />
-                                        </div><div class="form-group">
+                                        </div>
+                                        <div class="form-group">
                                             <label class="form-label" for="email1">Email</label
                                             ><span class="text-danger">(*)</span>
                                             <input
@@ -490,65 +460,69 @@
                                                     readonly="readonly"
                                             />
                                         </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <button
-                                                type="submit"
-                                                class="btn btn-success"
-                                        >
-                                            Save
-                                        </button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                            </button>
+                                            <button
+                                                    type="submit"
+                                                    class="btn btn-success"
+                                            >
+                                                Save
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
-<!--                end update user modal-->
+                <!--                end update user modal-->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Logout Modal-->
 
-<!-- Logout Modal-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
+<!--    Modal update data-->
+    <script th:src="@{js/systemmanager.js}"></script>
+    <script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
 
 </body>
 

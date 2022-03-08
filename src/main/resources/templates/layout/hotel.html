@@ -21,44 +21,43 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
 
-    <script>
-        const t = new Date();
-        const date = ('0' + t.getDate()).slice(-2);
-        const month = ('0' + (t.getMonth() + 1)).slice(-2);
-        const year = t.getFullYear();
+<!--    <script>-->
+<!--        const t = new Date();-->
+<!--        const date = ('0' + t.getDate()).slice(-2);-->
+<!--        const month = ('0' + (t.getMonth() + 1)).slice(-2);-->
+<!--        const year = t.getFullYear();-->
 
 
-        const time = `${date}/${month}/${year}`;
-        $(document).ready(function () {
+<!--        const time = `${date}/${month}/${year}`;-->
+<!--        $(document).ready(function () {-->
 
-            $('.table .eBtn').on('click', function (event) {
-                event.preventDefault();
-                var href = $(this).attr('href');
-                $.get(href, function (lsthotel, status) {
-                    $('.myModal #id').val(lsthotel.id);
-                    $('.myModal #name').val(lsthotel.name);
-                    $('.myModal #name_furigana').val(lsthotel.namefurigana);
-                    $('.myModal #url').val(lsthotel.url);
-                    $('.myModal #trade_name').val(lsthotel.tradename);
-                    $('.myModal #type').val(lsthotel.type);
-                    $('.myModal #phone_number').val(lsthotel.phonenumber);
-                    $('.myModal #fax_number').val(lsthotel.faxnumber);
-                    $('.myModal #pref_code').val(lsthotel.prefcode);
-                    $('.myModal #postal_code').val(lsthotel.postalcode);
-                    $('.myModal #address').val(lsthotel.address);
-                    $('.myModal #building_name').val(lsthotel.buildingname);
-                    $('.myModal #license_number').val(lsthotel.licensenumber);
-                    $('.myModal #image').val(lsthotel.image);
-                    $('.myModal #payment_method').val(lsthotel.paymentmethod);
-                    $('.myModal #create_at').val(lsthotel.createat);
-                    $('.myModal #update_at').val(time);
-                })
-                $('.myModal #exampleModal').modal();
-            });
-        });
-    </script>
+<!--            $('.table .eBtn').on('click', function (event) {-->
+<!--                event.preventDefault();-->
+<!--                var href = $(this).attr('href');-->
+<!--                $.get(href, function (lsthotel, status) {-->
+<!--                    $('.myModal #id').val(lsthotel.id);-->
+<!--                    $('.myModal #name').val(lsthotel.name);-->
+<!--                    $('.myModal #name_furigana').val(lsthotel.namefurigana);-->
+<!--                    $('.myModal #url').val(lsthotel.url);-->
+<!--                    $('.myModal #trade_name').val(lsthotel.tradename);-->
+<!--                    $('.myModal #type').val(lsthotel.type);-->
+<!--                    $('.myModal #phone_number').val(lsthotel.phonenumber);-->
+<!--                    $('.myModal #fax_number').val(lsthotel.faxnumber);-->
+<!--                    $('.myModal #pref_code').val(lsthotel.prefcode);-->
+<!--                    $('.myModal #postal_code').val(lsthotel.postalcode);-->
+<!--                    $('.myModal #address').val(lsthotel.address);-->
+<!--                    $('.myModal #building_name').val(lsthotel.buildingname);-->
+<!--                    $('.myModal #license_number').val(lsthotel.licensenumber);-->
+<!--                    $('.myModal #image').val(lsthotel.image);-->
+<!--                    $('.myModal #payment_method').val(lsthotel.paymentmethod);-->
+<!--                    $('.myModal #create_at').val(lsthotel.createat);-->
+<!--                    $('.myModal #update_at').val(time);-->
+<!--                })-->
+<!--                $('.myModal #exampleModal').modal();-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
 </head>
 <body id="page-top">
 
@@ -333,7 +332,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+                <h1 class="h3 mb-2 text-gray-800">Hotel</h1>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <!--                <button type="button" style="color: blue" class="btn btn-sm nBtn" data-toggle="modal1"-->
@@ -358,7 +357,7 @@
                                     <th>Address</th>
                                     <th>Create at</th>
                                     <th>Update at</th>
-                                    <th style="width: 230px;">Edit</th>
+                                    <th style="width: 165px;">Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -374,16 +373,13 @@
                                     <td>
                                         <a th:href="@{'/hotel/edit/' + ${colhotel.id}}" class="btn btn-sm eBtn"
                                            data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                            <img src="https://cdn-icons.flaticon.com/png/512/5996/premium/5996831.png?token=exp=1646627252~hmac=2ce6684c8d23e6c549041dfd63c09308"
-                                                 style="width: 45px"/></a>
+                                                Edit</a>
                                         <a th:href="@{'/hotel/delete/' + ${colhotel.id}}" class="btn btn-sm">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/3221/3221897.png"
-                                                 style="width: 45px"/></a>
+                                                Delete</a>
                                         </a>
                                         <a th:href="@{'hotel/preview/' + ${colhotel.id}}" type="button"
                                            class="btn btn-sm">
-                                            <img src="https://cdn-icons.flaticon.com/png/512/1703/premium/1703919.png?token=exp=1646628407~hmac=c1a28913ec4da3c761643bbaa234d740"
-                                                 style="width: 45px"/></a>
+                                                Preview</a>
                                         </a>
 
                                     </td>
@@ -644,7 +640,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="image" class="col-form-label">Image</label>
-                                        <input type="file" class="form-control"
+                                        <input type="text" class="form-control"
                                                name="image"
                                                value=""/>
                                     </div>
@@ -742,5 +738,8 @@
 
 <!-- Page level custom scripts -->
 <script src="js/demo/datatables-demo.js"></script>
+<!--modal data update-->
+<script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="js/hotel.js"></script>
 </body>
 </html>

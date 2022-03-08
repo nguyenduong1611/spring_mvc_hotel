@@ -21,38 +21,6 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
-
-    <script>
-        const t = new Date();
-        const date = ('0' + t.getDate()).slice(-2);
-        const month = ('0' + (t.getMonth() + 1)).slice(-2);
-        const year = t.getFullYear();
-
-
-        const time = `${date}/${month}/${year}`;
-        $(document).ready(function () {
-
-            $('.table .eBtn').on('click', function (event) {
-                event.preventDefault();
-                var href = $(this).attr('href');
-                $.get(href, function (lstcompany, status) {
-                   $('.myModal #id').val(lstcompany.id);
-                   $('.myModal #name').val(lstcompany.name);
-                   $('.myModal #name_furigana').val(lstcompany.nameFurigana);
-                   $('.myModal #phone_number').val(lstcompany.phoneNumber);
-                   $('.myModal #email').val(lstcompany.email);
-                   $('.myModal #pref_code').val(lstcompany.prefCode);
-                   $('.myModal #address').val(lstcompany.address);
-                   $('.myModal #postal_code').val(lstcompany.postalCode);
-                   $('.myModal #building_name').val(lstcompany.buildingName);
-                   $('.myModal #create_at').val(lstcompany.createAt);
-                   $('.myModal #update_at').val(lstcompany.updateAt);
-                })
-                $('.myModal #exampleModal').modal();
-            });
-        });
-    </script>
 
 </head>
 
@@ -331,7 +299,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+                <h1 class="h3 mb-2 text-gray-800">Company</h1>
                 <!--                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.-->
                 <!--                        For more information about DataTables, please visit the <a target="_blank"-->
                 <!--                            href="https://datatables.net">official DataTables documentation</a>.</p>-->
@@ -361,7 +329,7 @@
                                     <th>Building name</th>
                                     <th>Create At</th>
                                     <th>Update At</th>
-                                    <th>Edit</th>
+                                    <th style="width: 95px">Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -414,7 +382,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="name"
-                                                    id="name"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -424,7 +391,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="name_furigana"
-                                                    id="name_furigana"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -434,7 +400,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="phone_number"
-                                                    id="phone_number"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -444,7 +409,6 @@
                                                     type="email"
                                                     class="form-control"
                                                     name="email"
-                                                    id="email"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -454,7 +418,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="pref_code"
-                                                    id="pref_code"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -464,7 +427,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="address"
-                                                    id="address"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -474,7 +436,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="postal_code"
-                                                    id="postal_code"
                                             />
                                         </div>
                                         <div class="form-group">
@@ -484,7 +445,6 @@
                                                     type="text"
                                                     class="form-control"
                                                     name="building_name"
-                                                    id="building_name"
                                             />
                                         </div>
                                         <div class="text-right" style="padding: 0px 10px 10px 0px;">
@@ -666,6 +626,9 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+<!--    update data modal-->
+    <script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
+    <script src="js/company.js"></script>
 </body>
 
 </html>

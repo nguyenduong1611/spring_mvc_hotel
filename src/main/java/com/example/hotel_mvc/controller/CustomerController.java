@@ -1,6 +1,7 @@
 package com.example.hotel_mvc.controller;
 
 import com.example.hotel_mvc.model.entity.Customer;
+import com.example.hotel_mvc.model.entity.Hotel;
 import com.example.hotel_mvc.model.repository.database.CustomerRepository;
 import com.example.hotel_mvc.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,17 +67,21 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/edit/{id}")
-    public String showEditCustomer(Model model,
-                                   @PathVariable(name = "id") int id){
+    @ResponseBody
+    public Customer showEditHotel(
+            Model model,
+            @PathVariable(name = "id") int id) {
         Customer datacustomer = customerService.getById(id);
         create = datacustomer.getCreateAt();
-        model.addAttribute("datacustomer", datacustomer);
-        return "layout/updatecustomer";
+        System.out.println("time create: " + create );
+        model.addAttribute("datahotelpreview", datacustomer);
+//        return "layout/update";
+        return customerRepository.getById(id);
     }
 
-    @PostMapping("/editcustomer")
+    @PostMapping("/updatecustomer")
     public String updateCustomer(Model model,
-                                 @RequestParam(value = "id",required = false) int id,
+                                 @RequestParam(value = "id", required = false) int id,
                                  @RequestParam(value = "first_name", required = false) String first_name,
                                  @RequestParam(value = "first_name_furigana", required = false) String first_name_furigana,
                                  @RequestParam(value = "last_name", required = false) String last_name,
@@ -91,7 +96,9 @@ public class CustomerController {
                                  @RequestParam(value = "phone_number", required = false) String phone_number,
                                  @RequestParam(value = "birthday", required = false) String birthday,
                                  @RequestParam(value = "gender", required = false) String gender,
-                                 @RequestParam(value = "family_phone", required = false) String family_phone){
+                                 @RequestParam(value = "family_phone", required = false) String family_phone,
+                                 @RequestParam(value = "update_at", required = false) Date update_at
+    ){
         Customer customer = new Customer();
         customer.setId(id);
         customer.setFirstName(first_name);
@@ -110,7 +117,7 @@ public class CustomerController {
         customer.setGender(gender);
         customer.setFamilyPhone(family_phone);
         customer.setCreateAt(create);
-        customer.setUpdateAt(new Date());
+        customer.setUpdateAt(update_at);
         customerRepository.save(customer);
         return "redirect:/customer";
     }

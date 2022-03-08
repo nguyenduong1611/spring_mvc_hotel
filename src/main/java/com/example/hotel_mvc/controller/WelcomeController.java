@@ -3,8 +3,6 @@ package com.example.hotel_mvc.controller;
 import com.example.hotel_mvc.model.entity.Systemmanager;
 import com.example.hotel_mvc.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -22,12 +20,6 @@ public class WelcomeController {
 
     @Autowired
     private LoginService loginService;
-//   @RequestMapping(value = "/login", method = RequestMethod.GET)
-//    public String loginPage(Model model){
-//       System.out.println("welcome page");
-//       model.addAttribute("sum", "hebi");
-//       return "login/login";
-//    }
 //
 //    @RequestMapping(value = "/login", method = RequestMethod.POST)
 //    public String handleUserLogin(  Model model,
@@ -55,11 +47,16 @@ public class WelcomeController {
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
-        return "redirect:/";
+        return "redirect:/login";
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
 
         return "login/login";
+    }
+
+    @GetMapping("/test")
+    public String showTest(){
+        return "layout/test";
     }
 }

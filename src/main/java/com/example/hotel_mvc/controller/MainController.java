@@ -27,6 +27,10 @@ public class MainController {
         return "layout/tables";
     }
 
+    @GetMapping("/saveuser")
+    public String show(){
+        return "layout/save";
+    }
     @PostMapping("/saveuser")
     public String saveUser(Model model,
                            @RequestParam(value = "email", required = false) String email,

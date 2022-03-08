@@ -297,7 +297,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+                <h1 class="h3 mb-2 text-gray-800">Customer</h1>
                 <!--                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.-->
                 <!--                        For more information about DataTables, please visit the <a target="_blank"-->
                 <!--                            href="https://datatables.net">official DataTables documentation</a>.</p>-->
@@ -325,9 +325,10 @@
                                     <th>Work place</th>
                                     <th>Email</th>
                                     <th>Phone number</th>
+                                    <th>Birthday</th>
                                     <th>Create At</th>
                                     <th>Update At</th>
-                                    <th>Edit</th>
+                                    <th style="width: 120px">Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -341,11 +342,14 @@
                                     <td th:text="${customer.workPlace}"/>
                                     <td th:text="${customer.email}"/>
                                     <td th:text="${customer.phoneNumber}"/>
+                                    <td th:text="${customer.birthday}"/>
                                     <td th:text="${customer.createAt}"/>
                                     <td th:text="${customer.updateAt}"/>
 
                                     <td>
-                                        <a th:href="@{'/customer/edit/' + ${customer.id}}" class="btn btn-sm">Edit</a>
+                                        <a th:href="@{'/customer/edit/' + ${customer.id}}" class="btn btn-sm eBtn"
+                                           data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                                            Edit</a>
                                         <a th:href="@{'/customer/delete/' + ${customer.id}}" class="btn btn-sm">Delete</a>
                                     </td>
                                 </tr>
@@ -356,7 +360,7 @@
                     </div>
                 </div>
 
-                <!--    modal add data html-->
+<!--                add customer-->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
 
@@ -372,6 +376,182 @@
 
                                 <form action="/savecustomer" method="post">
                                     <div class="col-sm-9" style="margin: auto; padding: 20px;">
+                                        <div class="form-group">
+                                            <label class="form-label" for="first_name">First name</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="first_name"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="first_name_furigana">First name furigana</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="first_name_furigana"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="last_name">Last name</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="last_name"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="last_name_furigana">Last name furigana</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="last_name_furigana"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="postal_code">Postal code</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="postal_code"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="country">Country</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="country"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="pref_code">Pref code</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="pref_code"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="address">Address</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="address"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="building_name">Building name</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="building_name"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="work_place">Work place</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="work_place"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">Email</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="email"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone_number">Phone number</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="phone_number"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="birthday">Birthday</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="date"
+                                                    class="form-control"
+                                                    name="birthday"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="gender">Gender</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="gender"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="family_phone">Family phone</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="family_phone"
+                                            />
+                                        </div>
+                                        <div class="text-right" style="padding: 0px 10px 10px 0px;">
+                                            <button
+                                                    type="submit"
+                                                    class="btn btn-success"
+                                            >
+                                                Create
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+<!--                end add customer-->
+                <div class="myModal">
+                    <form action="/updatecustomer" method="post">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Update or create</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label class="form-label" for="id">ID</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="id"
+                                                    id="id"
+                                                    readonly="readonly"
+                                            />
+                                        </div>
                                         <div class="form-group">
                                             <label class="form-label" for="first_name">First name</label
                                             ><span class="text-danger">(*)</span>
@@ -522,25 +702,44 @@
                                                     id="family_phone"
                                             />
                                         </div>
-                                        <div class="text-right" style="padding: 0px 10px 10px 0px;">
-                                            <button
-                                                    type="submit"
-                                                    class="btn btn-success"
-                                            >
-                                                Create
-                                            </button>
-
+                                        <div class="form-group">
+                                            <label class="form-label" for="create_at">Create at</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="create_at"
+                                                    id="create_at"
+                                                    readonly="readonly"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="update_at">Update at</label
+                                            ><span class="text-danger">(*)</span>
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="update_at"
+                                                    id="update_at"
+                                                    readonly="readonly"
+                                            />
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button
+                                                type="submit"
+                                                class="btn btn-success"
+                                        >
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
+                    </form>
                 </div>
-
-                <!--    modal edit data html-->
-
                 <!-- /.container-fluid -->
 
             </div>
@@ -569,24 +768,24 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>-->
+<!--                <button class="close" type="button" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">×</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>-->
+<!--                <a class="btn btn-primary" href="login.html">Logout</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -603,6 +802,10 @@
 
 <!-- Page level custom scripts -->
 <script src="js/demo/datatables-demo.js"></script>
+
+<!--modal update data-->
+<script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="js/customer.js"></script>
 </body>
 
 </html>
